@@ -42,3 +42,46 @@ int persdetails::givecode()
 {
 return trvlcode;
 }
+
+//inputting personal Details
+void persdetails::p_input(int cd)  //input func() of class1
+{
+trvlcode=cd;
+num=0;
+clrscr();
+cout<<”\n\n\t:::::::::::::::::::::: PERSONAL DETAILS ::::::::::::::::::::::\n”;
+cout<<”\t\t\t\t~~~~~~~~~~~~~~\n”;
+cout<<”\n\t\t* Please fill in the details:\n\n\n\t\t\t1.Family Name: “;
+gets(familyname);
+cout<<”\n\t\t\t2.Address: “;
+gets(add);
+cout<<”\n\t\t\t3.Contact Number(10 Digit Mobile Number) : “;
+gets(phnum);
+cout<<”\n\n\n\t\tEnter The No of People Travelling: “;
+cin>>numppl;
+clrscr();
+if(numppl>0)
+{
+cout<<”\n\t\tPlease Enter The Details of each Member/Members: “<<endl;
+cout<<”\t\t\n”;
+for(int i=0;i<numppl;i++)
+{
+cout<<endl<<”\n\t\tMember “<<i+1;
+cout<<”\n\t\t~~~~~~~~”;
+cout<<”\n\n\t\tFirst Name: “;
+gets(name[i]);
+cout<<”\n\t\tAge: “;
+cin>>age[i];
+cout<<”\n\t\tSex (M/F): “;
+cin>>sex[i];
+cout<<”\n\t\tPassport Number: “;
+gets(passnum[i]);
+if(age[i]>5)
+{
+num++;    //to calculate no of travellers below 5 yrs
+}
+}
+}
+}
+
+
