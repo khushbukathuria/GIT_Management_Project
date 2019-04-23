@@ -194,3 +194,33 @@ cout<<”\n\n\t\tDo You Like To Avail The Facility Of A Swimming Pool\n\n\t\t\t1
 cin>>pool;
 pool–;
 break;
+case 7:clrscr();
+cout<<”\n\n\t\tDo You Like To Avail The Facility Of A Gymnasium\n\n\t\t\t1.No\n\n\t\t\t2.Yes\n\n\t\t\t “;
+cin>>gym;
+gym–;
+break;
+case 8:clrscr();
+cout<<”\n\n\t\tDo You Like To Avail The Sports Facilities Offered\n\n\t\t\t1.No\n\n\t\t\t2.Yes\n\n\t\t\t “;
+cin>>sports;
+sports–;
+break;
+case 9:clrscr();
+cout<<”\n\n\t\tDo You Like To Avail The Facility Of Beauty Salon\n\n\t\t\t1.No\n\n\t\t\t2.Yes\n\n\t\t\t “;
+cin>>salon;
+salon–;
+break;
+case 10:clrscr();
+cout<<”\n\n\tDo You Like To Avail The Facility Of Spa and Ayurvedic Treatment\n\n\t\t\t1.No\n\n\t\t\t2.Yes\n\n\t\t\t “;
+cin>>spa;
+spa–;
+break;
+case 11:clrscr();
+cout<<”\n\n\t\tDo You Like To Avail The Facility Of Amphitheatre\n\n\t\t\t1.No\n\n\t\t\t2.Yes\n\n\t\t\t “;
+cin>>theatre;
+theatre–;
+break;
+case 12:i=0;
+break;
+}
+}while(i==1);
+}
