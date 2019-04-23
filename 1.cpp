@@ -84,4 +84,20 @@ num++;    //to calculate no of travellers below 5 yrs
 }
 }
 
+//output personal details
+void persdetails::p_output() //output func() of class1
+{
+clrscr();
+cout<<”\n\n\t********************§ PERSONAL DETAILS §********************”<<endl;
+cout<<”\n\n\t\t\tFamily Name:\t “<<familyname<<endl;
+cout<<”\t\t\tAddress:\t “<<add<<endl;
+cout<<”\t\t\tPhone Number:\t “<<phnum<<endl;
+cout<<”\n\n\tName\t\tAge\t\tSex\t\tPassport Number\n”<<endl;
+for(int i=0;i<numppl;i++)
+{
+cout<<”\t”<<name[i]<<”\t\t”<<age[i]<<”\t\t”<<sex[i]<<”\t\t”<<passnum[i]<<endl;
+}
+getch();
+}
+
 
