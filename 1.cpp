@@ -29,3 +29,16 @@ int givecode();
 int give();
 }pob;
 
+//declaring functions for cruise management system
+int persdetails::give()
+{
+return num;
+}
+void persdetails::givefam()
+{
+cout<<familyname;
+}
+int persdetails::givecode()
+{
+return trvlcode;
+}
