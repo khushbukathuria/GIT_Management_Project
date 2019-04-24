@@ -100,4 +100,23 @@ cout<<”\t”<<name[i]<<”\t\t”<<age[i]<<”\t\t”<<sex[i]<<”\t\t”<<pas
 getch();
 }
 
-
+void travdetails::t_output()  //output func()-class2
+{
+clrscr();
+cout<<”\n\n\t*******************§ TRAVEL DETAILS §*********************”;
+cout<<”\n\n\t\tBoarding Point: “;
+boardpt(bdg_pt);
+cout<<”\n\n\t\tDestination: “;
+dest(go_pt);
+cout<<”\n\n\t\tDate of departure: “;
+cout<<day<<”/”<<month<<”/”<<year;
+cout<<”\n\n\t\tDeck: “;
+switch(deck)
+{
+case 1:cout<<”Top Deck”;
+break;
+case 2:cout<<”Middle Deck”;
+break;
+case 3:cout<<”Bottom Deck”;
+break;
+}
