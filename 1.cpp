@@ -120,3 +120,54 @@ break;
 case 3:cout<<”Bottom Deck”;
 break;
 }
+
+cout<<”\n\n\t\tCabin: “;
+switch(cabin)
+{
+case 1:cout<<”AC cabin”;
+break;
+case 2:cout<<”Non-AC cabin”;
+break;
+}
+cout<<”\n\n\n\tFacilities availed for are:”;
+if(pool==1)
+cout<<”\n\t\t\t\t    Swimming Pool”;
+if(gym==1)
+cout<<”\n\t\t\t\t    Gymnasuim”;
+if(sports==1)
+cout<<”\n\t\t\t\t    Sports Facilities”;
+if(spa==1)
+cout<<”\n\t\t\t\t    Spa and Ayurvedic Treatment”;
+if(salon==1)
+cout<<”\n\t\t\t\t    Beauty Salon”;
+if(theatre==1)
+cout<<”\n\t\t\t\t    Theatre”;
+getch();
+}
+void family(int c,int&flag)  //to display familyname+to check for record
+{
+flag=0;
+clrscr();
+ifstream ifl(“PersonalDetails.txt”,ios::binary);
+if(!ifl)
+cout<<”\nError”;
+ifl.read((char*)&pob,sizeof(pob));
+while(!ifl.eof())
+{
+if(pob.givecode()==c)
+{
+flag=1;
+break;
+}
+ifl.read((char*)&pob,sizeof(pob));
+}
+if(flag==1)
+{
+cout<<”\n\n\t\t ****** “;
+pob.givefam();
+cout<<”‘s FAMILY DATABASE ******”;
+}
+else
+{
+cout<<”\nError in locating record!!”;
+}
