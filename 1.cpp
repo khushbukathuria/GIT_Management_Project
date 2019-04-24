@@ -330,3 +330,192 @@ cout<<”\n\n\t\t\t\t “;
 cin>>opt;
 switch(opt)
 {	
+	case 1:do
+{
+clrscr();
+cout<<”\n\n\n\t\t\t\t    NEW USER\n”;
+cout<<”\t\t\t\t    ********\n\n”;
+cout<<”\n\n\t\t\tChoose the type of details you want to enter:”;
+cout<<”\n\n\t\t\t\t1.Personal Details\n\n\t\t\t\t2.Travel Details\n\n\t\t\t\t3.Back\n\n\t\t\t\t “;
+cin>>opt1;
+switch(opt1)
+{
+case 1:code++;
+pob.p_input(code);
+ofstream ofl(“PersonalDetails.txt”,ios::binary|ios::app);
+if(!ofl)
+cout<<”\n\n\t\tSorry.The File Cannot Be Opened For Writing”<<endl;
+ofl.write((char*)&pob,sizeof(pob));
+ofl.close();
+break;
+case 2:tob.t_input(code);
+ofstream ofl1(“TravelDetails.txt”,ios::binary|ios::app);
+if(!ofl1)
+cout<<”\n\n\t\tSorry.The File Cannot Be Opened For Writing”<<endl;
+ofl1.write((char*)&tob,sizeof(tob));
+ofl1.close();
+clrscr();
+cout<<”\n\n\n\n!!!!!Your Details Have Been Registered.Please Make A Note Of This Code: “<<code;
+cout<<”\n\n* For modifications,Please visit ‘existing user’ section in the main screen”;
+getch();
+break;
+}
+}while(opt1!=3);
+break;
+case 2:clrscr();
+cout<<”\n\n\t\t\t***** EXISTING USER *****\n\n\t\tPlease Enter The Travel Code That Was Given To You\n\n\t\t\t “;
+cin>>acceptcode;
+if(acceptcode>code)
+{
+cout<<”\nNo such record has been created!”;
+break;
+}
+family(acceptcode,flag);
+cout<<endl<<endl<<”\t\t\t\tCode no:”<<acceptcode;
+getch();
+if(flag==1)
+{
+do
+{
+clrscr();
+cout<<”\n\n\t\t\t@@@@@@@@@ Information Centre @@@@@@@@@”;
+cout<<”\n\t\t\t\t  ~~~~~~~~~~~~~~~~~”;
+cout<<”\n\n\tPlease select the type of operation that you would like to perform:”;
+cout<<”\n\n\t\t\t1.View Personal Details\n\n\t\t\t2.View Travel Details\n\n\t\t\t3.Edit Details\n\n\t\t\t4.Compute Bill\n\n\t\t\t5.Back\n\n\t\t\t “;
+cin>>opt2;
+switch(opt2)
+{
+case 1:ifstream ifl(“PersonalDetails.txt”,ios::binary);
+if(!ifl)
+cout<<”\nError”;
+ifl.read((char*)&pob,sizeof(pob));
+while(!ifl.eof())
+{
+if(pob.givecode()==acceptcode)
+{
+break;
+}
+ifl.read((char*)&pob,sizeof(pob));
+}
+pob.p_output();
+ifl.close();
+break;
+case 2:ifstream ifl1(“TravelDetails.txt”,ios::binary);
+if(!ifl1)
+cout<<”\nError”;
+ifl1.read((char*)&tob,sizeof(tob));
+while(!ifl1.eof())
+{
+if(tob.gtcode()==acceptcode)
+{
+break;
+}
+ifl1.read((char*)&tob,sizeof(tob));
+}
+tob.t_output();
+ifl1.close();
+break;
+case 3:do
+{
+clrscr();
+cout<<”\n\n\n\t­­­­­­­­­­­­­­­­­­­­­­§ Edit Details §­­­­­­­­­­­­­­­­­­­­­­­­­”;
+cout<<”\n\n\t\tPlease select from among the editing options:\n\n”;
+cout<<”\t\t\t\t1.Modify\n\n\t\t\t\t2.Delete\n\n\t\t\t\t3.Back\n\n\t\t\t\t “;
+cin>>opt3;
+switch(opt3)
+{
+case 1:do
+{
+clrscr();
+cout<<”\n\n\t\t Modificaton \n”;
+cout<<”\t\t               ~~~~~~~~~~~”;
+cout<<”\n\n\tChoose The Type Of Details You Want To Modify:\n\n\t\t\t1.Personal Details\n\n\t\t\t2.Travel Details\n\n\t\t\t3.Back\n\n\t\t\t “;
+cin>>opt4;
+switch(opt4)
+{
+case 1:editp(acceptcode);
+break;
+case 2:editt(acceptcode);
+break;
+case 3:break;
+}
+}while(opt4!=3);
+break;
+case 2:deletion(acceptcode);
+opt3=3;
+opt2=5;
+break;
+case 3:break;
+}
+}while(opt3!=3);
+break;
+case 4:ifstream ifl3(“PersonalDetails.txt”,ios::binary);
+if(!ifl3)
+cout<<”\nError”;
+ifl3.read((char*)&pob,sizeof(pob));
+while(!ifl3.eof())
+{
+if(pob.givecode()==acceptcode)
+{
+break;
+}
+ifl3.read((char*)&pob,sizeof(pob));
+}
+ifstream ifl2(“TravelDetails.txt”,ios::binary);
+if(!ifl2)
+cout<<”\nError”;
+ifl2.read((char*)&tob,sizeof(tob));
+while(!ifl2.eof())
+{
+if(tob.gtcode()==acceptcode)
+{
+break;
+}
+ifl2.read((char*)&tob,sizeof(tob));
+}
+tob.accept(pob.give());
+tob.compute();
+ifl2.close();
+break;
+case 5:break;
+}
+}while(opt2!=5);
+}
+break;
+case 3:ofstream fil(“INITIALL.txt”,ios::binary); //storing code value
+if(!fil)
+cout<<”\nError”;
+fil.write((char*)&code,sizeof(code));
+fil.close();
+clrscr();
+cout<<”\n\n”;
+cout<<”             _/_/_/_/_/  _/                            _/            \n”;
+cout<<”                _/      _/_/_/      _/_/_/  _/_/_/    _/  _/         \n”;
+cout<<”               _/      _/    _/  _/    _/  _/    _/  _/_/            \n”;
+cout<<”              _/      _/    _/  _/    _/  _/    _/  _/  _/           \n”;
+cout<<”             _/      _/    _/    _/_/_/  _/    _/  _/    _/          \n”;
+cout<<”                                                                  \n”;
+cout<<”                                                                  \n”;
+cout<<”                                                                  \n”;
+cout<<”                 _/     _/                                       \n”;
+cout<<”                  _/  _/    _/_/    _/    _/                     \n”;
+cout<<”                    _/    _/    _/  _/    _/                     \n”;
+cout<<”                    _/    _/    _/  _/    _/                     \n”;
+cout<<”                   _/      _/_/      _/_/_/                     \n\n”;
+cout<<”\t    |===|                        ~~\n”;
+cout<<”          _|   |____________________________________________|| ||___    ”;
+cout<<”\t\t    |_|_|_|_\__()____()____()______()______()_____()__||_||__/”<<endl;
+cout<<”\t    `.==———|_|—-|_|—–|_|—-|_|—————–/”<<endl;
+cout<<”\t      `.__________________________________________________/”<<endl;
+cout<<”……….oOoOo~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~”<<endl;
+cout<<”………oOoOo~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~”<<endl;
+cout<<”………oooo~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~”<<endl;
+getch();
+exit(0);
+}
+getch();
+}while(1); //infinite loop till exit selected
+}
+
+
+
