@@ -216,3 +216,117 @@ day=day%30;
 }
 }
 if(month==2)
+{
+if(day>28)
+{
+month=month+1;
+day=day%28;
+}
+}
+if(month==13)
+{
+month=1;
+year++;
+}
+cout<<”\n\n\t\tDate of Arrival: “;
+cout<<day<<”/”<<month<<”/”<<year;
+cout<<”\n\n\t\tSubject\t\tCost(for 1)\tNo of ppl\tTotal”;
+cout<<”\n\n\t\tTravel\t\t”<<dcst<<”\t\t   “<<num1<<”\t\t”<<num1*dcst;
+gttl+=num1*dcst;
+cout<<”\n\t\tDeck\t\t”<<dck<<”\t\t   “<<num1<<”\t\t”<<dck*num1;
+gttl+=dck*num1;
+cout<<”\n\t\tCabin\t\t”<<cabn<<”\t\t   “<<num1<<”\t\t”<<cabn*num1;
+gttl+=cabn*num1;
+if(pool==1)
+{
+cout<<”\n\t\tSwimming Pool\t”<<swpool<<”\t\t   “<<num1<<”\t\t”<<swpool*num1;
+gttl+=swpool*num1;
+}
+if(gym==1)
+{
+cout<<”\n\t\tGym\t\t”<<gm<<”\t\t   “<<num1<<”\t\t”<<gm*num1;
+gttl+=gm*num1;
+}
+if(sports==1)
+{
+cout<<”\n\t\tSports\t\t”<<spfts<<”\t\t   “<<num1<<”\t\t”<<spfts*num1;
+gttl+=spfts*num1;
+}
+if(salon==1)
+{
+cout<<”\n\t\tSalon\t\t”<<slon<<”\t\t   “<<num1<<”\t\t”<<slon*num1;
+gttl+=slon*num1;
+}
+if(spa==1)
+{
+cout<<”\n\t\tSpa\t\t”<<sp<<”\t\t   “<<num1<<”\t\t”<<sp*num1;
+gttl+=dcst*num1;
+}
+if(theatre==1)
+{
+cout<<”\n\t\tTheatre\t\t”<<ttr<<”\t\t   “<<num1<<”\t\t”<<ttr*num1;
+gttl+=ttr*num1;
+}
+cout<<”\n\n\n\t\t\t Grand Total:Rs “;
+if(gttl>100000)     //to provide comma’s for grandtotal
+{
+cout<<gttl/100000<<”,”;
+gttl=gttl%100000;
+}
+if(gttl>1000)
+{
+cout<<gttl/1000<<”,”;
+gttl=gttl%1000;
+}
+cout<<gttl;
+if(gttl<10)
+cout<<”00″;
+cout<<” ”;
+cout<<”\n\n\t‑‑! All Travellers below the age of 5 have not been charged !‑‑”;
+getch();
+}
+void main()
+{
+clrscr();
+cout<<”\n\n\n\n\n”;   //welcome screen
+cout<<”              **      :::::::  !!!!!!!!  ‑‑‑    ‑‑‑     \n”;
+cout<<”           _____  **      ::       !!    !!  ‑‑ ‑  ‑ ‑‑   _____  \n”;
+cout<<”              **      ::       !!    !!  ‑‑  ‑‑  ‑‑          \n”;
+cout<<”              ******  :::::::  !!!!!!!!  ‑‑   ‑  ‑‑     \n”;
+cout<<”\n\n\n\n\n”;
+cout<<”          ~    __  ~ __  ~ __                  \n”;
+cout<<”           |==|  |==|  |==|                 \n”;
+cout<<”         __|__|__|__|__|__|_                \n”;
+cout<<”      __|___________________|___            \n”;
+cout<<”       __|__[]__[]__[]__[]__[]__[]__|___         CRUISE DATABASE MANAGEMENT\n”;
+cout<<”      |……………………….o…/ \n”;
+cout<<”      \\…………………………./ \n”;
+cout<<”~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n”;
+cout<<” ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n”;
+cout<<”  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~\n”;
+cout<<”    ~    ~     ~    ~    ~    ~    ~    ~    ~  \n”;
+cout<<”     ~    ~      ~    ~     ~    ~    ~      ~\n”;
+ifstream fl(“INITIALL.txt”,ios::binary); //initialisation of code
+if(!fl)
+cout<<”\nError”;
+fl.read((char*)&code,sizeof(code));
+fl.close();
+int opt,opt1,opt2,opt3,opt4;
+int acceptcode,flag;
+getch();
+clrscr();
+do
+{
+clrscr();
+cout<<”\n\n\t\t­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­\n”;
+cout<<”\t\t ….WELCOME TO THE CRUISE DATABASE SYSTEM….\n”;
+cout<<”\t\t‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑‑\n\n\n”;
+cout<<”\t\t         \n”;
+cout<<”\t\t MAIN MENU \n”;
+cout<<”\t\t         \n\n”;
+cout<<”\n\t\t\tPlease select a kind of user:”;
+cout<<”\n\n\t\t\t\t1.New User\n\n\t\t\t\t2.Existing User\n\n\t\t\t\t3.Exit”;
+cout<<”\n\n\t\t\t\t “;
+cin>>opt;
+switch(opt)
+{	
