@@ -573,5 +573,47 @@ cout<<”\n\n\t\tPlease enter the following details for your journey:”;
 cout<<”\n\n\t\t*Note:Options marked with ‘*’ are compulsory.\n\t\t\tPlease do select them.”;
 cout<<”\n\n\n\t\t\t\t*1.Boarding Point\n\t\t\t\t*2.Destination\n\t\t\t\t*3.Date of Departure\n\t\t\t\t*4.Deck\n\t\t\t\t 5.Cabin\n\t\t\t\t 6.Swimming Pool\n\t\t\t\t 7.Gymnasuim\n\t\t\t\t 8.Sports\n\t\t\t\t 9.Salon\n\t\t\t\t 10.Spa\n\t\t\t\t 11.Theatre\n\t\t\t\t 12.Back\n\n\t\t\t\t “;
 cin>>opt;
-
+void deletion(int c)  //common delete func()
+{
+ofstream ofl2(“temp1.txt”,ios::binary);
+if(!ofl2)
+cout<<”Error While Opening File”;
+ifstream ifl4(“PersonalDetails.txt”,ios::binary);
+if(!ifl4)
+cout<<”Error While Opening File”;
+ifl4.read((char*)&pob,sizeof(pob));
+while(!ifl4.eof())
+{
+if(pob.givecode()!=c)
+{
+ofl2.write((char*)&pob,sizeof(pob));
+}
+ifl4.read((char*)&pob,sizeof(pob));
+}
+remove(“PersonalDetails.txt”);
+rename(“temp1.txt”,”PersonalDetails.txt”);
+ofl2.close();
+ifl4.close();
+ofstream ofl3(“temp2.txt”,ios::binary);
+if(!ofl3)
+cout<<”\nError While Opening File”;
+ifstream ifl5(“TravelDetails.txt”,ios::binary);
+if(!ifl5)
+cout<<”\nError While Opening File”;
+ifl5.read((char*)&tob,sizeof(tob));
+while(!ifl5.eof())
+{
+if(tob.gtcode()!=c)
+{
+ofl3.write((char*)&tob,sizeof(tob));
+}
+ifl5.read((char*)&tob,sizeof(tob));
+}
+ofl3.close();
+ifl5.close();
+remove(“TravelDetails.txt”);
+rename(“temp1.txt”,”TravelDetails.txt”);
+cout<<”\n\n\t\tDeletion Completed!”;
+getch();
+}
 
