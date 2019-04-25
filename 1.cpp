@@ -616,4 +616,294 @@ rename(‚Äútemp1.txt‚Äù,‚ÄùTravelDetails.txt‚Äù);
 cout<<‚Äù\n\n\t\tDeletion Completed!‚Äù;
 getch();
 }
+void travdetails::compute()   //compution+bill generation
+{
+long int gttl=0,hr,dcst,dck,cabn,swpool=5000,gm=2000,spfts=7500,slon=6000,sp=20000,ttr=500;
+switch(go_pt)
+{
+case 1:;
+case 2:;
+case 3:hr=30*24;
+dcst=250000;
+break;
+case 4:;
+case 5:;
+case 6:hr=7*24;
+dcst=75000;
+break;
+case 7:;
+case 8:;
+case 9:hr=24*24;
+dcst=130000;
+break;
+case 10:;
+case 11:;
+case 12:hr=15*24;
+dcst=100000;
+break;
+case 13:;
+case 14:;
+case 15:hr=12*24;
+dcst=120000;
+break;
+}
+switch(deck)
+{
+case 1:dck=7500;
+break;
+case 2:dck=5000;
+break;
+case 3:dck=1000;
+}
+switch(cabin)
+{
+case 1:cabn=5000;
+break;
+case 2:cabn=2000;
+break;
+clrscr();
+cout<<‚Äù\n\n\t\t:::::::::::::::::::::: BILL ::::::::::::::::::::::::::‚Äù;
+cout<<‚Äù\n\n\t\tBoarding point:\t\t ‚Äú;
+boardpt(bdg_pt);
+cout<<‚Äù\n\n\t\tDestination:\t\t ‚Äú;
+dest(go_pt);
+cout<<‚Äù\n\n\t\tDate of Departure: ‚Äú;
+cout<<day<<‚Äù/‚Äù<<month<<‚Äù/‚Äù<<year;
+hr=hr/24;         //to calculate date of arrival
+day=day+hr;
+if(month==1||month==3||month==5||month==7||month==8||month==10||month==12)
+{
+if(day>31)
+{
+month=month+1;
+day=day%31;
+}
+}
+if(month==4||month==6||month==9||month==11)
+{
+if(day>30)
+{
+month=month+1;
+day=day%30;
+}
+}
+if(month==2)
+{
+if(day>28)
+{
+month=month+1;
+day=day%28;
+}
+}
+if(month==13)
+{
+month=1;
+year++;
+}
+cout<<‚Äù\n\n\t\tDate of Arrival: ‚Äú;
+cout<<day<<‚Äù/‚Äù<<month<<‚Äù/‚Äù<<year;
+cout<<‚Äù\n\n\t\tSubject\t\tCost(for 1)\tNo of ppl\tTotal‚Äù;
+cout<<‚Äù\n\n\t\tTravel\t\t‚Äù<<dcst<<‚Äù\t\t   ‚Äú<<num1<<‚Äù\t\t‚Äù<<num1*dcst;
+gttl+=num1*dcst;
+cout<<‚Äù\n\t\tDeck\t\t‚Äù<<dck<<‚Äù\t\t   ‚Äú<<num1<<‚Äù\t\t‚Äù<<dck*num1;
+gttl+=dck*num1;
+cout<<‚Äù\n\t\tCabin\t\t‚Äù<<cabn<<‚Äù\t\t   ‚Äú<<num1<<‚Äù\t\t‚Äù<<cabn*num1;
+gttl+=cabn*num1;
+if(pool==1)
+{
+cout<<‚Äù\n\t\tSwimming Pool\t‚Äù<<swpool<<‚Äù\t\t   ‚Äú<<num1<<‚Äù\t\t‚Äù<<swpool*num1;
+gttl+=swpool*num1;
+}
+if(gym==1)
+{
+cout<<‚Äù\n\t\tGym\t\t‚Äù<<gm<<‚Äù\t\t   ‚Äú<<num1<<‚Äù\t\t‚Äù<<gm*num1;
+gttl+=gm*num1;
+}
+if(sports==1)
+{
+cout<<‚Äù\n\t\tSports\t\t‚Äù<<spfts<<‚Äù\t\t   ‚Äú<<num1<<‚Äù\t\t‚Äù<<spfts*num1;
+gttl+=spfts*num1;
+}
+if(salon==1)
+{
+cout<<‚Äù\n\t\tSalon\t\t‚Äù<<slon<<‚Äù\t\t   ‚Äú<<num1<<‚Äù\t\t‚Äù<<slon*num1;
+gttl+=slon*num1;
+}
+if(spa==1)
+{
+cout<<‚Äù\n\t\tSpa\t\t‚Äù<<sp<<‚Äù\t\t   ‚Äú<<num1<<‚Äù\t\t‚Äù<<sp*num1;
+gttl+=dcst*num1;
+}
+if(theatre==1)
+{
+cout<<‚Äù\n\t\tTheatre\t\t‚Äù<<ttr<<‚Äù\t\t   ‚Äú<<num1<<‚Äù\t\t‚Äù<<ttr*num1;
+gttl+=ttr*num1;
+}
+cout<<‚Äù\n\n\n\t\t\t Grand Total:Rs ‚Äú;
+if(gttl>100000)     //to provide comma‚Äôs for grandtotal
+{
+cout<<gttl/100000<<‚Äù,‚Äù;
+gttl=gttl%100000;
+}
+if(gttl>1000)
+{
+cout<<gttl/1000<<‚Äù,‚Äù;
+gttl=gttl%1000;
+}
+cout<<gttl;
+if(gttl<10)
+cout<<‚Äù00‚Ä≥;
+cout<<‚Äù ‚Äù;
+cout<<‚Äù\n\n\t‚Äë‚Äë! All Travellers below the age of 5 have not been charged !‚Äë‚Äë‚Äù;
+getch();
+}
+;
+}
 
+void persdetails::p_output() //output func() of class1
+{
+clrscr();
+cout<<î\n\n\t********************ß PERSONAL DETAILS ß********************î<<endl;
+cout<<î\n\n\t\t\tFamily Name:\t ì<<familyname<<endl;
+cout<<î\t\t\tAddress:\t ì<<add<<endl;
+cout<<î\t\t\tPhone Number:\t ì<<phnum<<endl;
+cout<<î\n\n\tName\t\tAge\t\tSex\t\tPassport Number\nî<<endl;
+for(int i=0;i<numppl;i++)
+{
+cout<<î\tî<<name[i]<<î\t\tî<<age[i]<<î\t\tî<<sex[i]<<î\t\tî<<passnum[i]<<endl;
+}
+getch();
+}
+class travdetails   //class which holds the travel details
+{
+int trvtcode;
+int day;
+int month;
+int year;
+int num1;
+int bdg_pt;
+int go_pt;
+int deck;
+int cabin;
+int pool;
+int gym;
+int sports;
+int salon;
+int spa;
+int theatre;
+public:
+void initial();
+void t_input(int);
+void t_output();
+void compute();
+int gtcode();
+void accept(int);
+}tob;
+void travdetails::initial()
+{
+pool=gym=theatre=sports=salon=0;
+}
+void travdetails::accept(int c)
+{
+num1=c;
+}
+int travdetails::gtcode()
+{
+return trvtcode;
+}
+void travdetails::t_input(int cd) //input func()-class2
+{
+tob.initial();
+trvtcode=cd;
+int i=1,opt;
+clrscr();
+do
+{
+clrscr();
+cout<<endl;
+cout<<î\n\n\t\t\t\t_||__TRAVEL DETAILS__î;
+cout<<î\n\t\t\t\t\\___________________/î;
+cout<<î\n\t\t\t\t~~~~~~~~~~~~~~~~~~~~~~î;
+cout<<î\n\n\t\tPlease enter the following details for your journey:î;
+cout<<î\n\n\t\t*Note:Options marked with ë*í are compulsory.\n\t\t\tPlease do select them.î;
+cout<<î\n\n\n\t\t\t\t*1.Boarding Point\n\t\t\t\t*2.Destination\n\t\t\t\t*3.Date of Departure\n\t\t\t\t*4.Deck\n\t\t\t\t 5.Cabin\n\t\t\t\t 6.Swimming Pool\n\t\t\t\t 7.Gymnasuim\n\t\t\t\t 8.Sports\n\t\t\t\t 9.Salon\n\t\t\t\t 10.Spa\n\t\t\t\t 11.Theatre\n\t\t\t\t 12.Back\n\n\t\t\t\t ì;
+cin>>opt;
+switch(opt)
+{
+case 1:clrscr();
+cout<<î\n\n\n\t\t\tSelect Boarding point:\n\n\t\t\t1.Mumbai\n\n\t\t\t2.Cochin\n\n\t\t\t3.Chennai\n\n\t\t\t ì;
+cin>>bdg_pt;
+break;
+case 2:clrscr();
+cout<<î\n\n\t\t\t****** Select Destination ******\n\n\nî;
+cout<<î\t 1.New York\t\t6.Dubai\t\t\t11.Antananarivî;
+cout<<î\n\n\t 2.Miami\t\t7.Lisbon\t\t12.Cairo\n\nî;
+cout<<î\t 3.Rio De Janeiro\t8.London\t\t13.Perthî;
+cout<<î\n\n\t 4.Colombo\t\t9.Copenhagen\t\t14.Sydneyî;
+cout<<î\n\n\t 5.Hong Kong\t\t10.Cape Town\t\t15.Wellington\n\n\n\n\n\t\t\t\t ì;
+cin>>go_pt;
+break;
+case 3:clrscr();
+cout<<î\n\n\t Date of Departure î;
+cout<<î\n\n   * Note:Format for entering:Day(press enter)Month(press enter)Year *î;
+cout<<î\n\n\t\tEnter your preferred date of departure: ì;
+cin>>day;
+gotoxy(59,7);   //to create a paricular format for entry
+cout<<î/î;
+cin>>month;
+gotoxy(62,7);
+cout<<î/î;
+cin>>year;
+break;
+case 4:clrscr();
+cout<<î\n\n\t\t\tEnter The Choice OF Deck\n\n\t\t\t1.Top Deck\n\n\t\t\t2.Middle Decks\n\n\t\t\t3.Bottom Deck\n\n\t\t\t ì;
+cin>>deck;
+break;
+case 5:clrscr();
+cout<<î\n\n\t\t\tEnter The Choice Of Cabin\n\n\t\t\t1.AC\n\n\t\t\t2.Non AC\n\n\t\t\t ì;
+cin>>cabin;
+break;
+case 6:clrscr();
+cout<<î\n\n\t\tDo You Like To Avail The Facility Of A Swimming Pool\n\n\t\t\t1.No\n\n\t\t\t2.Yes\n\n\t\t\t ì;
+cin>>pool;
+poolñ;
+break;
+case 7:clrscr();
+cout<<î\n\n\t\tDo You Like To Avail The Facility Of A Gymnasium\n\n\t\t\t1.No\n\n\t\t\t2.Yes\n\n\t\t\t ì;
+cin>>gym;
+gymñ;
+break;
+case 8:clrscr();
+cout<<î\n\n\t\tDo You Like To Avail The Sports Facilities Offered\n\n\t\t\t1.No\n\n\t\t\t2.Yes\n\n\t\t\t ì;
+cin>>sports;
+sportsñ;
+break;
+case 9:clrscr();
+cout<<î\n\n\t\tDo You Like To Avail The Facility Of Beauty Salon\n\n\t\t\t1.No\n\n\t\t\t2.Yes\n\n\t\t\t ì;
+cin>>salon;
+salonñ;
+break;
+case 10:clrscr();
+cout<<î\n\n\tDo You Like To Avail The Facility Of Spa and Ayurvedic Treatment\n\n\t\t\t1.No\n\n\t\t\t2.Yes\n\n\t\t\t ì;
+cin>>spa;
+spañ;
+break;
+case 11:clrscr();
+cout<<î\n\n\t\tDo You Like To Avail The Facility Of Amphitheatre\n\n\t\t\t1.No\n\n\t\t\t2.Yes\n\n\t\t\t ì;
+cin>>theatre;
+theatreñ;
+break;
+case 12:i=0;
+break;
+}
+}while(i==1);
+}
+void boardpt(int c)  //for easy o/p
+{
+if(c==1)
+cout<<îMumbai\tî;
+if(c==2)
+cout<<îCochin\tî;
+if(c==3)
+cout<<îChennai\tî;
+}
